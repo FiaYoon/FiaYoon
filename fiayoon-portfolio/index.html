@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>FiaYoon — Goldfish Artist</title>
+<meta name="description" content="FiaYoon — 무한한 가능성을 그리는 금붕어 작가. The goldfish True." />
+<meta property="og:title" content="FiaYoon" /><meta property="og:description" content="Goldfish Artist FiaYoon — infinite possibility" />
+<meta name="theme-color" content="#F2EADA" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Anton&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="/src/styles/global.css" />
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="bgWarp" x="-20%" y="-20%" width="140%" height="140%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.010 0.014" numOctaves="2" seed="7" result="noise">
+    <animate attributeName="baseFrequency" dur="16s" values="0.008 0.012;0.016 0.019;0.008 0.012" repeatCount="indefinite"/>
+  </feTurbulence>
+  <feDisplacementMap in="SourceGraphic" in2="noise" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs></svg>
+<div id="pagebg" aria-hidden="true"></div>
+<div id="pagebg2" aria-hidden="true"></div>
+<div id="pagebgfx" aria-hidden="true"></div>
+
+<header class="topbar">
+  <button class="brand" data-go="hello"><span class="b-pre">artist.</span>FiaYoon</button>
+  <div class="navwrap">
+    <nav class="nav" aria-label="menu">
+      <button data-go="gallery">Artwork</button>
+      <button data-go="aquarium">True Aquarium</button>
+      <button data-go="about">About</button>
+      <button data-go="contact">Contact</button>
+    </nav>
+    <button class="lang" id="langBtn">EN</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="view active" id="v-hello">
+  <div class="hero">
+    <svg class="fish-window" id="fishWindow" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <filter id="waterFx" x="-25%" y="-25%" width="150%" height="150%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.009 0.017" numOctaves="2" seed="4" result="noise">
+            <animate attributeName="baseFrequency" dur="18s" values="0.008 0.012;0.010 0.015;0.008 0.012" repeatCount="indefinite"/>
+          </feTurbulence>
+          <feDisplacementMap id="waterDisp" in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#cdeeff"/><stop offset="50%" stop-color="#5cb4ea"/><stop offset="100%" stop-color="#2a6fc2"/>
+        </linearGradient>
+        <path id="fishPath" d="M300 380 C300 300 372 250 470 244 C548 239 632 250 706 296 C690 322 688 344 720 356 C792 300 858 286 928 280 C892 332 882 360 882 380 C882 400 892 428 928 480 C858 474 792 460 720 404 C688 416 690 438 706 464 C632 510 548 521 470 516 C372 510 300 460 300 380 Z M512 250 L566 168 L624 252 Z M500 512 L552 588 L600 510 Z"/>
+        <clipPath id="fishClip"><use href="#fishPath"/></clipPath>
+        <mask id="fishHole"><rect width="1200" height="760" fill="#fff"/><use href="#fishPath" fill="#000"/></mask>
+      </defs>
+      <g clip-path="url(#fishClip)">
+        <rect width="1200" height="760" fill="url(#waterGrad)"/>
+        <g filter="url(#waterFx)">
+          <text class="ftext" x="590" text-anchor="middle" fill="rgba(255,255,255,.55)" style="letter-spacing:-1"><tspan x="590" y="360" font-size="80">GOLDFISH</tspan><tspan x="590" y="470" font-size="80">ARTIST</tspan></text>
+          <g stroke="rgba(255,255,255,.42)" stroke-width="11" fill="none" stroke-linecap="round">
+            <path d="M-60 230 q110 -52 220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0"/>
+            <path d="M-60 320 q110 52 220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0"/>
+            <path d="M-60 410 q110 -52 220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0"/>
+            <path d="M-60 500 q110 52 220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0"/>
+          </g>
+        </g>
+      </g>
+      <rect class="pop-plane" width="1200" height="760" mask="url(#fishHole)"/>
+    </svg>
+    <div class="hero-stage">
+      <p class="hi" data-i18n="hi">Hello, I'm</p>
+      <p class="role">FiaYoon</p>
+      <button class="more" id="moreBtn" data-i18n="more">Read now <span class="arr">→</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ARTWORK = LP carousel -->
+<section class="view" id="v-gallery">
+  <div class="lp">
+    <div class="lp-head">
+      <span class="eyebrow" data-i18n="lp_eye">Pick a chapter</span>
+      <h2>Artwork</h2>
+    </div>
+    <button class="lp-arrow prev" id="lpPrev" aria-label="previous">←</button>
+    <div class="lp-stage" id="lpStage"></div>
+    <button class="lp-arrow next" id="lpNext" aria-label="next">→</button>
+    <div class="lp-dots" id="lpDots"></div>
+  </div>
+</section>
+
+<!-- SERIES = intro + works grid -->
+<section class="view center" id="v-series">
+  <div class="inner">
+    <div class="series-intro">
+      <div class="si-meta">
+        <button class="si-back" data-go="gallery"><span data-i18n="back_ch">← Chapters</span></button>
+        <span class="si-tag" id="siTag"></span>
+        <h2 class="si-title" id="siTitle">Series</h2>
+        <div class="si-mood" id="siMood"></div>
+        <p class="si-desc" id="siDesc"></p>
+      </div>
+      <div class="si-hero" id="siHero"></div>
+    </div>
+    <div class="works-head">
+      <span class="wh-t" data-i18n="works">Works</span>
+      <span class="wh-m" id="siCount"></span>
+    </div>
+    <div class="works-grid" id="worksGrid"></div>
+  </div>
+</section>
+
+<!-- DETAIL -->
+<section class="view center" id="v-detail">
+  <div class="inner detail">
+    <div class="d-art"><img id="dImg" alt=""></div>
+    <div class="d-meta">
+      <div class="d-series" id="dSeries"></div>
+      <h3 id="dTtl"></h3>
+      <div class="d-spec" id="dSpec"></div>
+      <p class="d-note" id="dNote"></p>
+      <div class="d-controls">
+        <button class="inquire" id="dInquire" data-i18n="d_inquire">Inquire</button>
+        <button id="dShare" data-i18n="d_share">Share</button>
+        <div class="nav-mini"><button id="dPrev" aria-label="prev">←</button><button id="dNext" aria-label="next">→</button><button id="dBack" aria-label="back">✕</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT = long scroll -->
+<section class="view" id="v-about">
+  <div class="ab-bg" aria-hidden="true"></div>
+  <div class="ab-orb" data-par="0.10" aria-hidden="true" style="width:340px;height:340px;left:4%;top:16%;background:radial-gradient(circle,#ff5fbe,transparent 70%)"></div>
+  <div class="ab-orb" data-par="0.06" aria-hidden="true" style="width:300px;height:300px;right:6%;top:30%;background:radial-gradient(circle,#5f9bff,transparent 70%)"></div>
+  <div class="ab-orb" data-par="0.12" aria-hidden="true" style="width:240px;height:240px;left:16%;bottom:14%;background:radial-gradient(circle,#46e1cd,transparent 70%)"></div>
+  <div class="ab-orb" data-par="0.075" aria-hidden="true" style="width:280px;height:280px;right:12%;bottom:8%;background:radial-gradient(circle,#ffab46,transparent 70%)"></div>
+  <!-- 2. True & Love : flip cards -->
+  <div class="ab-sec" id="ab-chars">
+    <div class="ab-inner">
+      <div class="chars-copy" style="text-align:center;max-width:none;margin-bottom:clamp(26px,4vh,44px)">
+      </div>
+      <div class="card-row" data-ar>
+        <div class="flipcard">
+          <div class="flipcard-in">
+            <div class="flip-front"><img src="/assets/img/img_002_d26b2f6fd12b.webp" alt="True"></div>
+            <div class="flip-back back-true"><span class="fb-name">TRUE</span><span class="fb-kind" data-i18n="ch_true_k">금붕어</span></div>
+          </div>
+        </div>
+        <div class="flipcard">
+          <div class="flipcard-in">
+            <div class="flip-front flip-love"><img src="/assets/img/img_003_69e768e5d0f1.webp" alt="Love"></div>
+            <div class="flip-back back-love"><span class="fb-name">LOVE</span><span class="fb-kind" data-i18n="ch_love_k">아기천사</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. worldview -->
+  <div class="ab-sec" id="ab-world">
+    <div class="ab-inner world-wrap">
+      <span class="eyebrow" data-ar data-i18n="wo_eye">Artist note</span>
+      <div class="world-body" data-ar data-i18n="wo_body"></div>
+    </div>
+  </div>
+
+  <!-- 4. artist info + exhibitions -->
+  <div class="ab-sec" id="ab-info">
+    <div class="ab-inner">
+      <div class="info-grid">
+        <div class="info-card" data-ar>
+          <div class="info-photo"><img src="/assets/img/img_004_e6e45748f54a.webp" alt="FiaYoon"></div>
+          <div class="info-name">FiaYoon</div>
+          <div class="info-role">Goldfish Artist</div>
+          <div class="info-facts">
+            <div class="pair"><span class="k">Edu</span><span class="v">B.A. in Fashion Design</span></div>
+            <div class="pair"><span class="k"></span><span class="v">M.A. Candidate, Clinical Art Therapy</span></div>
+            <div class="pair"><span class="k">Insta</span><span class="v"><a href="https://instagram.com/fia.yoon" target="_blank" rel="noopener">@fia.yoon</a></span></div>
+            <div class="pair"><span class="k">Email</span><span class="v"><a href="mailto:fiayoon@gmail.com">fiayoon@gmail.com</a></span></div>
+          </div>
+        </div>
+        <div class="exh-wrap" data-ar>
+          <span class="eyebrow">Career</span>
+          <h3>Exhibitions</h3>
+          <div class="exh-sub" data-i18n="exh_sub">Selected exhibitions</div>
+          <div id="exhList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. love & true closing -->
+  <div class="ab-sec" id="ab-love">
+    <div class="love-stars" id="loveStars" aria-hidden="true"></div>
+    <div class="ab-inner">
+      <h2 class="love-h" data-ar><span class="pink" data-i18n="lv_h1">I love you too,</span><br><span class="yellow" data-i18n="lv_h2">my friend!</span></h2>
+      <div class="love-chars" data-ar>
+        <div class="lc true"><img src="/assets/img/img_005_e527539b6454.webp" alt="True"></div>
+      </div>
+      <div class="love-cta" data-ar>
+        <button class="primary" data-go="contact" data-i18n="lv_inq">Inquire artwork →</button>
+        <a href="https://instagram.com/fia.yoon" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:fiayoon@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<!-- MY TRUE -->
+<!-- TRUE AQUARIUM -->
+<section class="view" id="v-aquarium">
+  <!-- 1. aquarium (feeding only, no text) -->
+  <div class="ab-sec" id="ab-aqua">
+    <div class="aq-palette" id="aqPalette" aria-label="Colored True palette">
+      <div class="aq-strip">
+        <button class="aq-pg aq-prev" id="aqPrev" type="button" aria-label="previous">‹</button>
+        <div class="aq-track" id="aqTrack"></div>
+        <button class="aq-pg aq-next" id="aqNext" type="button" aria-label="next">›</button>
+      </div>
+      <div class="aq-dots" id="aqDots"></div>
+    </div>
+    <div class="aqua-canvas" id="aquaCanvas">
+      <div class="aqua-fish" id="aquaFish"><img src="/assets/img/img_005_e527539b6454.webp" alt="True the goldfish"></div>
+    </div>
+    <div class="aqua-unlock" id="aquaUnlock" style="display:none"></div>
+    <div class="aq-tools">
+      <button class="aq-btn aq-reset" id="aqReset" type="button" data-i18n="aq_reset">↺ 전체 초기화</button>
+      <button class="aq-btn aq-dl" id="aqDownload" type="button" data-i18n="aq_dl">⬇ 사진 저장</button>
+    </div>
+    <div class="aqua-tip" id="aquaTip" data-i18n="aq_tip">빈 곳을 눌러 밥을 주고, 위의 트루를 눌러 친구를 추가하세요.</div>
+  </div>
+</section>
+
+<section class="view center contact" id="v-contact">
+  <svg class="cfish" aria-hidden="true" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <filter id="waterFxC" x="-25%" y="-25%" width="150%" height="150%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.009 0.017" numOctaves="2" seed="9" result="nC">
+          <animate attributeName="baseFrequency" dur="12s" values="0.008 0.014;0.016 0.026;0.008 0.014" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="nC" scale="20" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <linearGradient id="waterGradC" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#cdeeff"/><stop offset="50%" stop-color="#5cb4ea"/><stop offset="100%" stop-color="#2a6fc2"/>
+      </linearGradient>
+      <path id="fishPathC" d="M300 380 C300 300 372 250 470 244 C548 239 632 250 706 296 C690 322 688 344 720 356 C792 300 858 286 928 280 C892 332 882 360 882 380 C882 400 892 428 928 480 C858 474 792 460 720 404 C688 416 690 438 706 464 C632 510 548 521 470 516 C372 510 300 460 300 380 Z M512 250 L566 168 L624 252 Z M500 512 L552 588 L600 510 Z"/>
+      <clipPath id="fishClipC"><use href="#fishPathC"/></clipPath>
+      <mask id="fishHoleC"><rect width="1200" height="760" fill="#fff"/><use href="#fishPathC" fill="#000"/></mask>
+    </defs>
+    <g clip-path="url(#fishClipC)">
+      <rect width="1200" height="760" fill="url(#waterGradC)"/>
+      <g filter="url(#waterFxC)">
+        <g stroke="rgba(255,255,255,.4)" stroke-width="11" fill="none" stroke-linecap="round">
+          <path d="M-60 250 q110 -52 220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0"/>
+          <path d="M-60 360 q110 52 220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0"/>
+          <path d="M-60 470 q110 -52 220 0 t220 0 t220 0 t220 0 t220 0 t220 0 t220 0"/>
+        </g>
+      </g>
+    </g>
+    <rect class="pop-plane" width="1200" height="760" mask="url(#fishHoleC)"/>
+  </svg>
+  <div class="inner">
+    <span class="eyebrow" data-reveal>Contact</span>
+    <h2 data-reveal data-i18n="contact_h">Get in touch</h2>
+    <div class="sub" data-reveal data-i18n="contact_sub">작품 구매·전시 문의를 보내주세요.</div>
+    <div class="form" data-reveal>
+      <div class="two">
+        <div><label data-i18n="f_name">Name</label><input id="cName" type="text"></div>
+        <div><label data-i18n="f_email">Email</label><input id="cEmail" type="email"></div>
+      </div>
+      <div><label data-i18n="f_msg">Message</label><textarea id="cMsg"></textarea></div>
+      <button class="send" id="cSend" data-i18n="f_send">Send</button>
+    </div>
+    <div class="alt" data-reveal><span data-i18n="c_or">또는 직접 연락하세요</span>
+      <a href="mailto:fiayoon@gmail.com">fiayoon@gmail.com</a><a href="https://instagram.com/fia.yoon" target="_blank" rel="noopener">@fia.yoon</a></div>
+  </div>
+</section>
+
+<div class="wipe" id="wipe"><div class="wc" id="wc"></div></div>
+<div class="lens" id="lens" aria-hidden="true"></div>
+<div class="cur" id="cur" aria-hidden="true"><img src="/assets/img/img_005_e527539b6454.webp" alt=""></div>
+<div class="toast" id="toast"></div>
+<div class="veil" id="veil"><img src="/assets/img/img_005_e527539b6454.webp" alt=""></div>
+
+
+<script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>
